@@ -1,0 +1,28 @@
+front end 
+    1 react -Sara / Mark 
+    2 css style - Sara /Mark
+    3 design - Sara/ Mark
+ -Bonus / 10 points total - Eddie
+    4 web manifest 
+      Service worker 
+      installable
+back end 
+    1 model - Ahmed /Eddie 
+    2 server - Ahmed /Eddie
+    3 user authentication JWT  - Eddie /Ahmed 
+    4 MongoDB database - Eddie
+    5 Heroku deployment - Eddie
+ -if needed 
+    6 Seeders - Eddie 
+README
+presentation 
+    1 Elevator pitch: A one-minute description of your application.
+    2 Concept: What is your user story? What was your motivation for development
+    3 Process: What technologies did you use? How did you break down and assign tasks and roles? What challenges did you encounter? What were your successes?
+    4 Directions for future development.
+
+Theme
+*Application should originate from a unique and novel idea.
+*Your group should clearly and concisely articulate your project idea.
+1- coupon searching site with votes /recommendations
+
