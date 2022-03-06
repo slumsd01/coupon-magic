@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="">
       <div className="container">
-        &copy;{new Date().getFullYear()} by Ning
+        &copy;{new Date().getFullYear()} by Coupon Magic
       </div>
     </footer>
   );
