@@ -2,10 +2,10 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="">
-      <div className="container">
-        &copy;{new Date().getFullYear()} by Coupon Magic
-      </div>
+    <footer className="container d-flex justify-content-center">
+      <div className="row d-flex justify-content-center">
+        &copy;{new Date().getFullYear()} A.Lotfey, E.Ning, M.Kanczuzewski, and S.Lumsden
+      </div> 
     </footer>
   );
 };

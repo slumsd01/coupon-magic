@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <header className="container background-color color">
       <div className="d-flex bd-highlight mb-3">
-        <Link to="/" className= "me-auto p-2 bd-highlight" style={{ textDecoration: 'none' }}>
+        <Link to="/" className= "me-auto p-2 bd-highlight bg-secondary-color" style={{ textDecoration: 'none' }}>
           <h1>Coupon Magic $</h1>
         </Link>
         <nav className="p-2 bd-highlight">
@@ -35,4 +35,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Header; 

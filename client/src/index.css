@@ -25,9 +25,18 @@ a:link {
 }
 
 a:visited {
-    color: #BD54E3;
+    color: #000000;
 }
 
 a:hover {
-    color: #64F500;
+    color: #BD54E3;
+}
+
+.bg-secondary-color {
+    background-color: #64F500;
+}
+
+.bg-dark-color {
+    background-color: #000000;
+    color: #fafafa;
 }
