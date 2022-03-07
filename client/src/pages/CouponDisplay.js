@@ -2,7 +2,7 @@ import React from 'react';
 import Auth from '../utils/auth';
 
 
-const Coupon = () => {
+const CouponDisplay = () => {
   
 
   const loggedIn = Auth.loggedIn();
@@ -16,4 +16,4 @@ const Coupon = () => {
   );
 };
 
-export default Coupon;
+export default CouponDisplay;

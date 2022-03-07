@@ -1,3 +1,6 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.js';
+import './index.css';
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {
@@ -10,11 +13,11 @@ import { setContext } from '@apollo/client/link/context';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
-
+import NoMatch from './pages/NoMatch';
 import Home from './pages/Home';
-import Login from './pages/Login';
 import Profile from './pages/Profile';
-import Coupon from './pages/Coupon';
+import CouponEntry from './pages/CouponEntry';
+import CouponDisplay from './pages/CouponDisplay';
 
 // establish a new link to graphql server
 const httpLink = createHttpLink({
@@ -45,10 +48,9 @@ function App() {
           <div>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/signup" component={Signup} />
+              <Route exact path="/couponentry/:id" component={CouponEntry} />
               <Route exact path="/profile/:username?" component={Profile} />
-              <Route exact path="/coupon/:id" component={Coupon} />
+              <Route exact path="/coupondisplay/:id" component={CouponDisplay} />
               <Route component={NoMatch} />
             </Switch>
           </div>

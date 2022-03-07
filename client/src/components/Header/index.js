@@ -8,23 +8,25 @@ const Header = () => {
     Auth.logout();
   };
   return (
-    <header>
-      <div>
-        <Link to="/">
+    <header className="container background-color color">
+      <div className="d-flex bd-highlight mb-3">
+        <Link to="/" className= "me-auto p-2 bd-highlight" style={{ textDecoration: 'none' }}>
           <h1>Coupon Magic $</h1>
         </Link>
-        <nav className="text-center">
+        <nav className="p-2 bd-highlight">
           {Auth.loggedIn() ? (
             <>
-              <Link to="/profile">Profile</Link>
-              <a href="/" onClick={logout}>
+              <Link to="/profile" className="px-3" style={{ textDecoration: 'none' }}>Profile</Link>
+              <a href="/" onClick={logout} className="px-3" style={{ textDecoration: 'none' }}>
                 Logout
               </a>
             </>
           ) : (
             <>
-              <Link to="/">Home</Link>
-              <Link to="/login">Login | Signup</Link>
+            <div className="p-2 bd-highlight">
+              <Link to="/" className="px-3" style={{ textDecoration: 'none' }}>Home</Link>
+              <Link to="/login" className="px-3" style={{ textDecoration: 'none' }}>Login/Signup</Link>
+            </div>
             </>
           )}
         </nav>

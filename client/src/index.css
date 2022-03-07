@@ -1,0 +1,33 @@
+:root {
+    --primary: #50D1FA;
+    --secondary: #64F500;
+    --tertiary: #BD54E3;
+    --light: #fafafa;
+    --dark: #000000;
+    --darker: #111111;
+    --error: rgb(228, 46, 1);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    line-height: 1.5;
+    font-size: 18px;
+    letter-spacing: .1em;
+    color: #000000;
+    font-family: 'Harrington';
+    background-color: #50D1FA;
+}
+
+a:link {
+    color: #000000;
+}
+
+a:visited {
+    color: #BD54E3;
+}
+
+a:hover {
+    color: #64F500;
+}
