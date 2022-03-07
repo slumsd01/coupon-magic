@@ -32,11 +32,27 @@ a:hover {
     color: #BD54E3;
 }
 
+.bg-primary-color {
+    background-color: #50D1FA;
+}
+
 .bg-secondary-color {
     background-color: #64F500;
 }
 
+.bg-tertiary-color {
+    background-color: #BD54E3;
+    
+}
+
+.text-color-white {
+    color: #fafafa;
+}
+
 .bg-dark-color {
     background-color: #000000;
-    color: #fafafa;
+}
+
+.dropdownbutton{
+    background-color: #fafafa;
 }
