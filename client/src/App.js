@@ -49,7 +49,8 @@ function App() {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/couponentry/:id" component={CouponEntry} />
-              <Route exact path="/profile/:username?" component={Profile} />
+              {/* <Route exact path="/profile/:username?" component={Profile} /> */}
+              <Route exact path="/profile/" component={Profile} />
               {/* <Route exact path="/coupondisplay/:id" component={CouponDisplay} /> */}
               <Route exact path="/coupondisplay/" component={CouponDisplay} />
               <Route component={NoMatch} />

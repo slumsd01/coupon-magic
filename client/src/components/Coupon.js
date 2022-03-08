@@ -1,11 +1,12 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
+import placeholder from "../img/cheezit.jpg"
 
 const Coupon = () => {
   return (
     <Card>
-        <Card.img></Card.img>
-        <Card.Title>Your favorit backed snack</Card.Title>
+        <Card.Img variant="top" src={placeholder} />
+        <Card.Title>Your favorite backed snack</Card.Title>
         <Card.Text>Cheez-it</Card.Text>
         <Card.Text>Kellogg</Card.Text>
         <Card.Text>$0.20</Card.Text>
