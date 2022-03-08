@@ -21,9 +21,9 @@ const CouponDisplay = () => {
 
   return (
     <main>
-      <Container className="container bg-secondary-color justify-content-left col-6 p-2 mt-4">
-        <Col className="d-flex bd-highlight justify-content-center p-4 col-6">
-          <div className="flex-row justify-space-between">
+      <Container className="container justify-content-between col-6 p-2 mt-4">
+        <Col className="d-flex bd-highlight bg-secondary-color justify-content-center p-4 col-6">
+          <div className="flex-row justify-content-left">
             {/* {loggedIn && ( */}
               <div className="col-12 mb-3">
                 <Coupon />
