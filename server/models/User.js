@@ -20,10 +20,18 @@ const userSchema = new Schema(
       required: true,
       minlength: 5,
     },
-    couponId: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Coupon'
-    }]
+    coupons: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: 'Coupon'
+        }
+      ],
+    comments: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: 'Comment'
+        }
+      ]
   },
   {
     toJSON: {

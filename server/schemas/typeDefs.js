@@ -9,12 +9,20 @@ const typeDefs = gql`
   }
   type Coupon {
     _id: ID
-    commentText: String
+    couponTitle: String
     createdAt: String
     userId: [User]
   }
+  type Comment {
+      _id: ID
+      commentText: String
+      createdAt: String
+      couponId: [Coupon]
+      userId: [User]
+  }
   type Query {
     users: [User]
+    coupons: [Coupon]
   }
 `;
 
