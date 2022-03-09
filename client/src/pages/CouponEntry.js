@@ -10,7 +10,7 @@ const CouponEntry = () => {
   return (
     <main className='page'>
         <h2 className='purple-bg'>Create your business's own COUPON MAGIC today!</h2>
-        <h4 className='left-align bold-text'>Sign In</h4>
+        <h4 className='left-align bold-text'>Create a new coupon</h4>
         <section className='green-bg form-section'>          
           <form className='form'>
             <label className='blue-bg row'>
