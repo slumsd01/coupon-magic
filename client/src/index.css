@@ -56,3 +56,40 @@ a:hover {
 .dropdownbutton{
     background-color: #fafafa;
 }
+
+/* home & coupon display */
+
+.blue-bg {
+    background-color: #50D1FA;
+}
+
+.green-bg {
+    background-color: #64F500;
+}
+
+.purple-bg {
+    background-color: #BD54E3;
+    color: white;
+}
+
+.home-form-page {
+    text-align: center;
+    margin: 0 10px;
+}
+
+.left-align {
+    text-align: left;
+    margin: 15px 10px;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+.home-form {
+    padding: 30px 50px;
+}
+
+.home-form button {
+    width: 50%;
+}

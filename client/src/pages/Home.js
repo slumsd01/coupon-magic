@@ -7,41 +7,41 @@ const Home = () => {
   const loggedIn = Auth.loggedIn();
 
   return (
-    <main>
-        <h2>Create your business's own COUPON MAGIC today!</h2>
-        <section>
-          <h4>Sign In</h4>
-          <form>
-            <label>
-              Email: <br/>
-              <input type="text"/>
+    <main className='home-form-page'>
+        <h2 className='purple-bg'>Create your business's own COUPON MAGIC today!</h2>
+        <h4 className='left-align bold-text'>Sign In</h4>
+        <section className='green-bg form-section'>          
+          <form className='home-form'>
+            <label className='blue-bg row'>
+              <p className='col-3'>Email:</p>
+              <input type="text" className='col-9'/>
             </label><br/>
-            <label>
-              Password: <br/>
-              <input type="text"/>
+            <label className='blue-bg row'>
+            <p className='col-3'>Password:</p>
+              <input type="text" className='col-9'/>
             </label><br/>
-            <button>Sign In</button>
+            <button className='purple-bg'>Sign In</button>
           </form>
         </section>
-        <section>
-          <h4>Create Account</h4>
-          <form>
-            <label>
-              Username: <br/>
-              <input type="text"/>
+        <h4 className='left-align bold-text'>Create Account</h4>
+        <section className='green-bg form-section'>
+          <form className='home-form'>
+            <label className='blue-bg row'>
+            <p className='col-3'>Username:</p>
+              <input type="text" className='col-9'/>
             </label><br/>
-            <label>
-              Email: <br/>
-              <input type="text"/>
+            <label className='blue-bg row'>
+            <p className='col-3'>Email:</p>
+              <input type="text" className='col-9'/>
             </label><br/>
-            <label>
-              Password: <br/>
-              <input type="text"/>
+            <label className='blue-bg row'>
+            <p className='col-3'>Password:</p>
+              <input type="text" className='col-9'/>
             </label><br/>
-            <button>Create Account</button>
+            <button className='purple-bg'>Create Account</button>
           </form>
         </section>
-        <h4>Sign in or create an account to be taken to the coupon creation screen.</h4>
+        <h4 className='purple-bg'>Sign in or create an account to be taken to the coupon creation screen.</h4>
     </main>
   );
 };
