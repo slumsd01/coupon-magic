@@ -8,36 +8,46 @@ const CouponEntry = () => {
   const loggedIn = Auth.loggedIn();
 
   return (
-    <main>
-        <h2>Create your business's own COUPON MAGIC today!</h2>
-        <form>
-          <label>
-            Name: <br/>
-            <input type="text"/>
-          </label><br/>
-          <label>
-            Product: <br/>
-            <input type="text"/>
-          </label><br/>
-          <label>
-            Vendor / Manufacturer: <br/>
-            <input type="text"/>
-          </label><br/>
-          <label>
-            Amount Off (% or $): <br/>
-            <input type="text"/>
-          </label><br/>
-          <label>
-            Currency: <br/>
-            <input type="text"/>
-          </label><br/>
-          <label>
-            Expiration Date: <br/>
-            <input type="text"/>
-          </label><br/>
-          <button>Submit</button>
-        </form>
-        <h4>Sign in or create an account to be taken to the coupon creation screen.</h4>
+    <main className='page'>
+        <h2 className='purple-bg'>Create your business's own COUPON MAGIC today!</h2>
+        <h4 className='left-align bold-text'>Sign In</h4>
+        <section className='green-bg form-section'>          
+          <form className='form'>
+            <label className='blue-bg row'>
+              <p className='col-4'>Name:</p>
+              <input type="text" className='col-8'/>
+            </label><br/>
+            <label className='blue-bg row'>
+              <p className='col-4'>Product:</p>
+              <input type="text" className='col-8'/>
+            </label><br/>
+            <label className='blue-bg row'>
+              <p className='col-4'>Vendor / Manufacturer:</p>
+              <input type="text" className='col-8'/>
+            </label><br/>
+            <label className='blue-bg row'>
+              <p className='col-4'>Amount Off (% or $):</p>
+              <input type="text" className='col-8'/>
+            </label><br/>
+            <label className='blue-bg row'>
+              <p className='col-4'>Currency:</p>
+              <input type="text" className='col-8'/>
+            </label><br/>
+            <label className='blue-bg row'>
+              <p className='col-4'>Expiration Date:</p>
+              <input type="text" className='col-8'/>
+            </label><br/>
+            <label className='blue-bg row'>
+              <p className='col-4'>Maximum Redemptions:</p>
+              <input type="text" className='col-8'/>
+            </label><br/>
+            <button className='purple-bg'>Submit</button>
+          </form>
+        </section>
+        <h4 className='purple-bg'>
+          Fill in the above fields to get started.<br/>
+          This will output an image or code to use on your store's website.
+        </h4>
     </main>
   );
 };

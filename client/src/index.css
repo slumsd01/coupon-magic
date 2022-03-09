@@ -60,19 +60,19 @@ a:hover {
 /* home & coupon display */
 
 .blue-bg {
-    background-color: #50D1FA;
+    background-color: var(--primary)
 }
 
 .green-bg {
-    background-color: #64F500;
+    background-color: var(--secondary)
 }
 
 .purple-bg {
-    background-color: #BD54E3;
+    background-color: var(--tertiary);
     color: white;
 }
 
-.home-form-page {
+.page {
     text-align: center;
     margin: 0 10px;
 }
@@ -86,10 +86,10 @@ a:hover {
     font-weight: bold;
 }
 
-.home-form {
+.form {
     padding: 30px 50px;
 }
 
-.home-form button {
+.form button {
     width: 50%;
 }

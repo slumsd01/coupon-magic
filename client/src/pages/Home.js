@@ -7,11 +7,11 @@ const Home = () => {
   const loggedIn = Auth.loggedIn();
 
   return (
-    <main className='home-form-page'>
+    <main className='page'>
         <h2 className='purple-bg'>Create your business's own COUPON MAGIC today!</h2>
         <h4 className='left-align bold-text'>Sign In</h4>
         <section className='green-bg form-section'>          
-          <form className='home-form'>
+          <form className='form'>
             <label className='blue-bg row'>
               <p className='col-3'>Email:</p>
               <input type="text" className='col-9'/>
@@ -25,7 +25,7 @@ const Home = () => {
         </section>
         <h4 className='left-align bold-text'>Create Account</h4>
         <section className='green-bg form-section'>
-          <form className='home-form'>
+          <form className='form'>
             <label className='blue-bg row'>
             <p className='col-3'>Username:</p>
               <input type="text" className='col-9'/>

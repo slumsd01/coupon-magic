@@ -25,7 +25,7 @@ const Header = () => {
             <>
             <div className="p-2 bd-highlight">
               <Link to="/" className="px-3" style={{ textDecoration: 'none' }}>Home</Link>
-              <Link to="/login" className="px-3" style={{ textDecoration: 'none' }}>Login/Signup</Link>
+              <Link to="/login" className="px-3" style={{ textDecoration: 'none' }}>Login / Sign Up</Link>
             </div>
             </>
           )}
