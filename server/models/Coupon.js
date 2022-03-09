@@ -42,11 +42,15 @@ const couponSchema = new Schema(
     image: {
       type: String,
     },
-  },
-  {
-    toJSON: {
-      getters: true,
-    },
+    user: [{
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }],
+    comments: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Comment'
+    }]
+
   }
 );
 

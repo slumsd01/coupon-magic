@@ -1,0 +1,23 @@
+[
+    {
+        "couponTitle": "test1",
+        "product": "testproduct1",
+        "vendor": "test",
+        "amountOff": 10,
+        "maxRedemptions": 5
+      },
+      {
+        "couponTitle": "test2",
+        "product": "testproduct2",
+        "vendor": "test",
+        "amountOff": 5,
+        "maxRedemptions": 15
+      },
+      {
+        "couponTitle": "test3",
+        "product": "testproduct3",
+        "vendor": "test",
+        "amountOff": 100,
+        "maxRedemptions": 25
+      }
+    ]

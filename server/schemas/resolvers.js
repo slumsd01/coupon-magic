@@ -1,12 +1,15 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User,Comment } = require('../models');
+const { User,Comment ,Coupon} = require('../models');
 
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
       users: async () => {
-        return User.find().sort({ createdAt: -1 });
+        return User.find().populate('coupons');
+      },
+      coupons: async () => {
+        return Coupon.find().sort({ createdAt: -1 });
       }
     }
   };

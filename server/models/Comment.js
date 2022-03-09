@@ -12,13 +12,13 @@ const commentSchema = new Schema(
       type: Date,
       default: Date.now,
     },
-    couponId: [
+    coupon: [
       {
         type: Schema.Types.ObjectId,
         ref: 'Coupon',
       },
     ],
-    userId: [
+    user: [
       {
         type: Schema.Types.ObjectId,
         ref: 'User',
