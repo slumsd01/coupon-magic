@@ -77,6 +77,10 @@ a:hover {
     margin: 0 10px;
 }
 
+.page h2, .page h4 {
+    padding: 2px;
+}
+
 .left-align {
     text-align: left;
     margin: 15px 10px;

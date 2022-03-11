@@ -1,12 +1,6 @@
 import React from 'react';
-import Auth from '../utils/auth';
-
 
 const CouponEntry = () => {
-  
-
-  const loggedIn = Auth.loggedIn();
-
   return (
     <main className='page'>
         <h2 className='purple-bg'>Create your business's own COUPON MAGIC today!</h2>
