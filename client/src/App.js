@@ -18,6 +18,8 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import CouponEntry from './pages/CouponEntry';
 import CouponDisplay from './pages/CouponDisplay';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 // establish a new link to graphql server
 const httpLink = createHttpLink({
@@ -48,6 +50,8 @@ function App() {
           <div>
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={Signup} />
               <Route exact path="/couponentry/:id" component={CouponEntry} />
               {/* <Route exact path="/profile/:username?" component={Profile} /> */}
               <Route exact path="/profile/" component={Profile} />

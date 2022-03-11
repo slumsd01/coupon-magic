@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
+import { Container } from 'react-bootstrap';
 import Auth from '../utils/auth';
 
 const Signup = () => {
@@ -36,7 +37,7 @@ const Signup = () => {
 
   return (
     <main className='page'>
-        <h2 className='purple-bg'>Create your business's own COUPON MAGIC today!</h2>
+         <Container>
         <h4 className='left-align bold-text'>Create Account</h4>
         <section className='green-bg form-section'>
           <form onSubmit={handleFormSubmit} className='form'>
@@ -80,7 +81,7 @@ const Signup = () => {
           </form>
         </section>
         {error && <div>Sign up failed</div>}
-        <h4 className='purple-bg'>Sign in or create an account to be taken to the coupon creation screen.</h4>
+        </Container>
     </main>
   );
 };

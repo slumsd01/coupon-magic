@@ -16,6 +16,7 @@ const Header = () => {
         <nav className="p-2 bd-highlight">
           {Auth.loggedIn() ? (
             <>
+              <Link to="/" className="px-3" style={{ textDecoration: 'none' }}>Home</Link>
               <Link to="/profile" className="px-3" style={{ textDecoration: 'none' }}>Profile</Link>
               <a href="/" onClick={logout} className="px-3" style={{ textDecoration: 'none' }}>
                 Logout
@@ -25,7 +26,8 @@ const Header = () => {
             <>
             <div className="p-2 bd-highlight">
               <Link to="/" className="px-3" style={{ textDecoration: 'none' }}>Home</Link>
-              <Link to="/login" className="px-3" style={{ textDecoration: 'none' }}>Login / Sign Up</Link>
+              <Link to="/login" className="px-3" style={{ textDecoration: 'none' }}>Login</Link>
+              <Link to="/signup" className="px-3" style={{ textDecoration: 'none' }}>Signup</Link>
             </div>
             </>
           )}
