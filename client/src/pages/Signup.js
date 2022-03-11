@@ -34,7 +34,6 @@ const Signup = () => {
     }
   };
 
-
   return (
     <main className='page'>
          <Container>

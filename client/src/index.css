@@ -93,3 +93,7 @@ a:hover {
 .form button {
     width: 50%;
 }
+
+.about img {
+    height: 100px;
+}
