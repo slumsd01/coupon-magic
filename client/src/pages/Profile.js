@@ -1,45 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
-import Dropdown from 'react-bootstrap/Dropdown';
-import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Select from 'react-select'
 
 const Profile = () => {
-  // const { username: userParam } = useParams();
+  const { loading, data } = useQuery(QUERY_ME);
+  
+  if (!Auth.loggedIn()) {
+    return <Redirect to="/login" />;
+  }
 
-  // const [formState, setFormState] = useState({ email: '', password: '' });
-  // const [login, { error }] = useMutation(LOGIN_USER);
-  // // update state based on form input changes
-  // const handleChange = (event) => {
-  //   const { name, value } = event.target;
 
-  //   setFormState({
-  //     ...formState,
-  //     [name]: value,
-  //   });
-  // };
 
-  // // submit form
-  // const handleFormSubmit = async event => {
-  //   event.preventDefault();
-
-  //   try {
-  //     const { data } = await login({
-  //       variables: { ...formState }
-  //     });
-    
-  //     Auth.login(data.login.token);
-  //   } catch (e) {
-  //     console.error(e);
+  // if (Auth.loggedIn()===false)
+  //   {
+  //     return <Redirect to="/login" />;
   //   }
-  // };
 
-  // const loggedIn = Auth.loggedIn();
-  if (Auth.loggedIn()===false)
-    {
-      return <Redirect to="/login" />;
-    }
+    //fetch saved coupons for logged in user
+    // try {
+    //   const response = await fetch(
 
+    //   )
+    // } catch (err) {
+    //   console.error(err);
+    // }
+
+    const coupons = [
+      { value: 'chocolate', label: 'Chocolate' },
+      { value: 'strawberry', label: 'Strawberry' },
+      { value: 'vanilla', label: 'Vanilla' }
+    ]
+ 
   return (
     <main>
       <div className="container">
@@ -55,15 +49,7 @@ const Profile = () => {
             <div className="bd-highlight col-3 bg-primary-color">
               My Coupons
             </div>
-            <Dropdown as={ButtonGroup}>
-              <Dropdown.Toggle variant="light">Select previously created coupon here!</Dropdown.Toggle>
-              <Dropdown.Menu className="dropdownbutton">
-                <Dropdown.Item eventKey="1">baz</Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item eventKey="2">foo</Dropdown.Item>
-                <Dropdown.Item eventKey="3">bar</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+            <Select options={coupons} />
           </div>
           <div className="d-flex col-12 bd-highlight justify-content-center">
             <button className="d-flex bd-highlight justify-content-center col-2">
