@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { ADD_COUPON } from '../utils/mutations'
 
 const CouponEntry = () => {
   const [formState, setFormState] = useState(
@@ -15,13 +17,24 @@ const CouponEntry = () => {
 
   const { couponTitle, product, vendor, amountOff, currency, redeemBy, maxRedemptions } = formState
 
+  const [addCoupon, { error }] = useMutation(ADD_COUPON)
+
   function handleChange(e) {
     setFormState({...formState, [e.target.name]: e.target.value})
   }
 
-  function handleSubmit(e) {
-    e.preventDefault()
+  const handleSubmit = async event => {
+    event.preventDefault()
     console.log(formState)
+
+    try {
+      // add to database
+      await addCoupon({
+        variables: {...formState}
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
