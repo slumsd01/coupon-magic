@@ -1,9 +1,12 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import Auth from '../utils/auth';
 import Dropdown from 'react-bootstrap/Dropdown';
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 const Profile = () => {
+  // const { username: userParam } = useParams();
+
   // const [formState, setFormState] = useState({ email: '', password: '' });
   // const [login, { error }] = useMutation(LOGIN_USER);
   // // update state based on form input changes
@@ -32,6 +35,10 @@ const Profile = () => {
   // };
 
   // const loggedIn = Auth.loggedIn();
+  if (Auth.loggedIn()===false)
+    {
+      return <Redirect to="/login" />;
+    }
 
   return (
     <main>
