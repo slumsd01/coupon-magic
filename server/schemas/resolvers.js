@@ -88,7 +88,7 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
-    // addComment: async (parent, { friendId }, context) => {
+    // addComment: async (parent, { couponId }, context) => {
     //   if (context.user) {
     //     const updatedUser = await User.findOneAndUpdate(
     //       { _id: context.user._id },
