@@ -28,12 +28,11 @@ const resolvers = {
         .populate('coupons')
         .populate('comments');
     },
-    coupons: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Thought.find(params).sort({ createdAt: -1 });
+    coupons: async () => {
+      return Coupon.find();
     },
     coupon: async (parent, { _id }) => {
-      return Thought.findOne({ _id });
+      return Coupon.findOne({ _id });
     }
   },
 

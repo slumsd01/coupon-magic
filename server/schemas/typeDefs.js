@@ -14,8 +14,13 @@ const typeDefs = gql`
     _id: ID
     couponTitle: String
     createdAt: String
-    username: String
-    commentCount: Int
+    product: String
+    vendor: String
+    amountOff: Int
+    currency: String
+    redeemBy: String
+    maxRedemptions: Int
+    user: [User]
     comments: [Comment]
   }
 

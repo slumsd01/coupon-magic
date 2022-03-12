@@ -6,55 +6,17 @@ import Auth from '../utils/auth';
 import Select from 'react-select';
 
 const Profile = () => {
-  const { loading, data } = useQuery(QUERY_ME);
-  //const couponsFromQuery = useQuery(QUERY_ME);
-  //const dataSS = data.me.username;
+  const { loading, error, data } = useQuery(QUERY_ME);
 
-    //alert(data);
-  // data.coupons.map(c => {
-  //   console.log(c.couponTitle);
-  // });
-  // const couponsfromapi = data.map(coupon => ({
-  //   "value" : coupon.couponTitle,
-  //   "display" : coupon.couponTitle
-  // }));
-
-  const [coupons] = React.useState([
-    {
-      label: "Luke Skywalker",
-      value: "Luke Skywalker"
-    },
-    { label: "C-3PO", value: "C-3PO" },
-    { label: "R2-D2", value: "R2-D2" }
-  ]);
-
-  // const coupons = [
-  //   { value: 'chocolate', label: 'Chocolate' },
-  //   { value: 'strawberry', label: 'Strawberry' },
-  //   { value: 'vanilla', label: 'Vanilla' }
-  // ]
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
+  const couponsFromDatabase = data.me.coupons.map(coupon => (
+    { value: coupon.id, label: coupon.couponTitle }
+  ));
   
   if (!Auth.loggedIn()) {
     return <Redirect to="/login" />;
   }
-
-
-
-  // if (Auth.loggedIn()===false)
-  //   {
-  //     return <Redirect to="/login" />;
-  //   }
-
-    //fetch saved coupons for logged in user
-    // try {
-    //   const response = await fetch(
-
-    //   )
-    // } catch (err) {
-    //   console.error(err);
-    // }
-
-
  
   return (
     <main>
@@ -71,17 +33,18 @@ const Profile = () => {
             <div className="bd-highlight col-3 bg-primary-color">
               My Coupons
             </div>
-            {/* <Select options={coupons} /> */}
-            <select>
-              {coupons.map(item => (
-                <option
-                  key={item.value}
-                  value={item.value}
-                >
-                  {item.label}
-                </option>
-              ))}
-            </select>
+            {
+              data ?
+                (
+                  <Select options={this.couponsFromDatabase} />
+                  // <select key="couponSelection">
+                  //     {data.me.coupons.map(coupon => (
+                  //       <option value={coupon.id} key={coupon.id}>
+                  //     {coupon.couponTitle}
+                  //     </option>))}
+                  // </select>
+              ) : null
+            }
           </div>
           <div className="d-flex col-12 bd-highlight justify-content-center">
             <button className="d-flex bd-highlight justify-content-center col-2">
