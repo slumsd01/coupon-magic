@@ -10,9 +10,6 @@ const Profile = () => {
 
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
-  const couponsFromDatabase = data.me.coupons.map(coupon => (
-    { value: coupon.id, label: coupon.couponTitle }
-  ));
   
   if (!Auth.loggedIn()) {
     return <Redirect to="/login" />;
@@ -36,13 +33,13 @@ const Profile = () => {
             {
               data ?
                 (
-                  <Select options={this.couponsFromDatabase} />
-                  // <select key="couponSelection">
-                  //     {data.me.coupons.map(coupon => (
-                  //       <option value={coupon.id} key={coupon.id}>
-                  //     {coupon.couponTitle}
-                  //     </option>))}
-                  // </select>
+                  // <Select options={this.couponsFromDatabase} />
+                  <select key="couponSelection">
+                      {data.me.coupons.map(coupon => (
+                        <option key={coupon._id} value={coupon._id}>
+                      {coupon.couponTitle}
+                      </option>))}
+                  </select>
               ) : null
             }
           </div>
