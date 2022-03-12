@@ -28,8 +28,8 @@ db.once('open', async () => {
   for (let i = 0; i < 50; i += 1) {
     const product = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
-    const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
-    const { username, _id: userId } = createdUsers.ops[randomUserIndex];
+    const randomUserIndex = Math.floor(Math.random() * createdUsers.length);
+    const { username, _id: userId } = createdUsers[randomUserIndex];
 
     const createdCoupon = await Coupon.create({ username, product});
 
@@ -45,13 +45,13 @@ db.once('open', async () => {
   for (let i = 0; i < 50; i += 1) {
     const commentText = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
-    const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
-    const { username } = createdUsers.ops[randomUserIndex];
+    const randomUserIndex = Math.floor(Math.random() * createdUsers.length);
+    const { username } = createdUsers[randomUserIndex];
 
     const randomCouponIndex = Math.floor(Math.random() * createdCoupons.length);
     const { _id: couponId } = createdCoupons[randomCouponIndex];
 
-    await Thought.updateOne(
+    await Coupon.updateOne(
       { _id: couponId },
       { $push: { comments: { commentText, username } } },
       { runValidators: true }
