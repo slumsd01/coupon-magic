@@ -39,19 +39,17 @@ export const QUERY_THOUGHT = gql`
 export const QUERY_USER = gql`
   query user($username: String!) {
     user(username: $username) {
-      _id
-      username
-      email
-      friendCount
-      friends {
+    username
+    email
+      coupons{
         _id
-        username
-      }
-      thoughts {
-        _id
-        thoughtText
-        createdAt
-        reactionCount
+        couponTitle
+        product
+        vendor
+        amountOff
+        currency
+        redeemBy
+        maxRedemptions
       }
     }
   }
@@ -63,22 +61,9 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      friendCount
-      thoughts {
+      coupons {
         _id
-        thoughtText
-        createdAt
-        reactionCount
-        reactions {
-          _id
-          createdAt
-          reactionBody
-          username
-        }
-      }
-      friends {
-        _id
-        username
+        couponTitle
       }
     }
   }
@@ -90,11 +75,7 @@ export const QUERY_ME_BASIC = gql`
       _id
       username
       email
-      friendCount
-      friends {
-        _id
-        username
-      }
     }
   }
 `;
+
