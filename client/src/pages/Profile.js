@@ -3,10 +3,36 @@ import { Redirect } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
-import Select from 'react-select'
+import Select from 'react-select';
 
 const Profile = () => {
   const { loading, data } = useQuery(QUERY_ME);
+  //const couponsFromQuery = useQuery(QUERY_ME);
+  //const dataSS = data.me.username;
+
+    //alert(data);
+  // data.coupons.map(c => {
+  //   console.log(c.couponTitle);
+  // });
+  // const couponsfromapi = data.map(coupon => ({
+  //   "value" : coupon.couponTitle,
+  //   "display" : coupon.couponTitle
+  // }));
+
+  const [coupons] = React.useState([
+    {
+      label: "Luke Skywalker",
+      value: "Luke Skywalker"
+    },
+    { label: "C-3PO", value: "C-3PO" },
+    { label: "R2-D2", value: "R2-D2" }
+  ]);
+
+  // const coupons = [
+  //   { value: 'chocolate', label: 'Chocolate' },
+  //   { value: 'strawberry', label: 'Strawberry' },
+  //   { value: 'vanilla', label: 'Vanilla' }
+  // ]
   
   if (!Auth.loggedIn()) {
     return <Redirect to="/login" />;
@@ -28,11 +54,7 @@ const Profile = () => {
     //   console.error(err);
     // }
 
-    const coupons = [
-      { value: 'chocolate', label: 'Chocolate' },
-      { value: 'strawberry', label: 'Strawberry' },
-      { value: 'vanilla', label: 'Vanilla' }
-    ]
+
  
   return (
     <main>
@@ -49,7 +71,17 @@ const Profile = () => {
             <div className="bd-highlight col-3 bg-primary-color">
               My Coupons
             </div>
-            <Select options={coupons} />
+            {/* <Select options={coupons} /> */}
+            <select>
+              {coupons.map(item => (
+                <option
+                  key={item.value}
+                  value={item.value}
+                >
+                  {item.label}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="d-flex col-12 bd-highlight justify-content-center">
             <button className="d-flex bd-highlight justify-content-center col-2">
