@@ -11,7 +11,7 @@ import { useParams } from 'react-router-dom';
 
 const CouponDisplay = () => {
   const { id: couponId } = useParams();
-  alert(couponId);
+
   // use useQuery hook to make query request
   const { loading, error, data } = useQuery(QUERY_COUPON, {
     variables: { id: couponId }
@@ -21,7 +21,7 @@ const CouponDisplay = () => {
   if (error) return `Error! ${error.message}`;
 
   const coupon = data?.coupon || {};
-alert(coupon.length)
+
   // ensure the user is logged in, if not redirect to the login page
   if (!Auth.loggedIn()) {
     return <Redirect to="/login" />;
@@ -35,7 +35,7 @@ alert(coupon.length)
             {/* {loggedIn && ( */}
               <div className="col-12">
                 <Coupon 
-                  coupon={coupon} />
+                  singleCoupon={coupon} />
               {/* </div>
             )} */}
               </div>

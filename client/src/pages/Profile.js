@@ -19,11 +19,8 @@ const Profile = () => {
   }
 
   const handleChange = event => {
-        const linkObject = document.getElementById("linkToCouponDisplay");
-        const selectObject = document.getElementById("couponSelection")?.value;
-        alert(selectObject);
-        let path = "/couponDisplay/" + selectObject;
-        alert(path);
+    const selectObject = document.getElementById("couponSelection")?.value;
+    let path = "/couponDisplay/" + selectObject;
     history.push(path);
   }
   return (
