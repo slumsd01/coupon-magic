@@ -30,10 +30,10 @@ const resolvers = {
     },
     coupons: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Thought.find(params).sort({ createdAt: -1 });
+      return Coupon.find(params).sort({ createdAt: -1 });
     },
     coupon: async (parent, { _id }) => {
-      return Thought.findOne({ _id });
+      return Coupon.findOne({ _id });
     }
   },
 
@@ -62,7 +62,7 @@ const resolvers = {
     },
     addCoupon: async (parent, args, context) => {
       if (context.user) {
-        const coupon= await coupon.create({ ...args, username: context.user.username });
+        const coupon = await Coupon.create({ ...args, username: context.user.username });
 
         await User.findByIdAndUpdate(
           { _id: context.user._id },

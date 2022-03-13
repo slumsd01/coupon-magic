@@ -39,9 +39,9 @@ const couponSchema = new Schema(
     maxRedemptions: {
       type: Number,
     },
-    image: {
-      type: String,
-    },
+    // image: {
+    //   type: String,
+    // },
     user: [{
       type: Schema.Types.ObjectId,
       ref: 'User'
