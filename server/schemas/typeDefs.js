@@ -12,10 +12,15 @@ const typeDefs = gql`
 
   type Coupon {
     _id: ID
-    couponText: String
+    couponTitle: String
     createdAt: String
-    username: String
-    commentCount: Int
+    product: String
+    vendor: String
+    amountOff: Int
+    currency: String
+    redeemBy: String
+    maxRedemptions: Int
+    user: [User]
     comments: [Comment]
   }
 
@@ -42,7 +47,7 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addCoupon(couponText: String!): Coupon
+    addCoupon(couponTitle: String!): Coupon
     addComment(couponId: ID!, commentBody: String!): Coupon
   }
 `;
