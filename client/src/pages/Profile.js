@@ -4,9 +4,12 @@ import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 import Select from 'react-select';
+import { Link } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 const Profile = () => {
   const { loading, error, data } = useQuery(QUERY_ME);
+  const history = useHistory();
 
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
@@ -14,7 +17,15 @@ const Profile = () => {
   if (!Auth.loggedIn()) {
     return <Redirect to="/login" />;
   }
- 
+
+  const handleChange = event => {
+        const linkObject = document.getElementById("linkToCouponDisplay");
+        const selectObject = document.getElementById("couponSelection")?.value;
+        alert(selectObject);
+        let path = "/couponDisplay/" + selectObject;
+        alert(path);
+    history.push(path);
+  }
   return (
     <main>
       <div className="container">
@@ -33,8 +44,7 @@ const Profile = () => {
             {
               data ?
                 (
-                  // <Select options={this.couponsFromDatabase} />
-                  <select key="couponSelection">
+                  <select id="couponSelection">
                       {data.me.coupons.map(coupon => (
                         <option key={coupon._id} value={coupon._id}>
                       {coupon.couponTitle}
@@ -44,7 +54,7 @@ const Profile = () => {
             }
           </div>
           <div className="d-flex col-12 bd-highlight justify-content-center">
-            <button className="d-flex bd-highlight justify-content-center col-2">
+            <button className="d-flex bd-highlight justify-content-center col-2" onClick={handleChange}>
               Submit
             </button>
           </div>

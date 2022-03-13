@@ -54,8 +54,8 @@ function App() {
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/couponentry/:id" component={CouponEntry} />
               <Route exact path="/profile/" component={Profile} />
-              {/* <Route exact path="/coupondisplay/:id" component={CouponDisplay} /> */}
-              <Route exact path="/coupondisplay/" component={CouponDisplay} />
+              <Route exact path="/coupondisplay/:id" component={CouponDisplay} />
+              {/* <Route exact path="/coupondisplay/" component={CouponDisplay} /> */}
               <Route component={NoMatch} />
             </Switch>
           </div>

@@ -2,6 +2,13 @@ import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import placeholder from "../img/cheezit.jpg"
 
+const displayCoupon = ({coupon}) => {
+  alert(coupon.length)
+  if (!coupon.length) {
+    return <h3>No coupon to display</h3>;
+  }
+}
+
 const Coupon = () => {
   return (
     <Card>

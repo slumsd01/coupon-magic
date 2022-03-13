@@ -6,24 +6,26 @@ import Auth from '../utils/auth';
 import { Redirect } from 'react-router-dom';
 import { Container, Col } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
-import { QUERY_THOUGHTS, QUERY_ME_BASIC } from '../utils/queries';
-
+import { QUERY_ME_BASIC, QUERY_COUPON } from '../utils/queries';
+import { useParams } from 'react-router-dom';
 
 const CouponDisplay = () => {
+  const { id: couponId } = useParams();
+  alert(couponId);
   // use useQuery hook to make query request
-  const { loading, data } = useQuery(QUERY_THOUGHTS);
-  // use object destructuring to extract `data` from the `useQuery` Hook's response and rename it `userData` to be more descriptive
-  const { data: userData } = useQuery(QUERY_ME_BASIC);
+  const { loading, error, data } = useQuery(QUERY_COUPON, {
+    variables: { id: couponId }
+  });
 
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
+
+  const coupon = data?.coupon || {};
+alert(coupon.length)
   // ensure the user is logged in, if not redirect to the login page
   if (!Auth.loggedIn()) {
     return <Redirect to="/login" />;
   }
-
-  const thoughts = data?.thoughts || [];
-  console.log(thoughts);
-
-  const loggedIn = Auth.loggedIn();
 
   return (
     <main>
@@ -32,7 +34,8 @@ const CouponDisplay = () => {
           <div className="d-flex justify-content-left">
             {/* {loggedIn && ( */}
               <div className="col-12">
-                <Coupon />
+                <Coupon 
+                  coupon={coupon} />
               {/* </div>
             )} */}
               </div>
@@ -45,7 +48,7 @@ const CouponDisplay = () => {
                 <ThoughtForm />
               </div>
             {/* )} */}
-            <div className={`flex-row col-12 ${loggedIn && 'col-lg-12'}`}>
+            {/* <div className={`flex-row col-12 ${loggedIn && 'col-lg-12'}`}>
               {loading ? (
                 <div>Loading...</div>
               ) : (
@@ -53,8 +56,8 @@ const CouponDisplay = () => {
                   thoughts={thoughts}
                   title="Some Feed for Thought(s)..."
                 />
-              )}
-            </div>
+              )} */}
+            {/* </div> */}
           </div>
         </Col>
       </Container>

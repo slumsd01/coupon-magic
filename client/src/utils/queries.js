@@ -90,6 +90,21 @@ export const QUERY_COUPONS = gql`
   }
 `;
 
+export const QUERY_COUPON = gql`
+  query coupon($id: ID!) {
+    coupon(_id: $id) {
+      _id
+      couponTitle
+      product
+      vendor
+      amountOff
+      currency
+      redeemBy
+      maxRedemptions
+    }
+  }
+  `;
+
 export const QUERY_ME_BASIC = gql`
   {
     me {
