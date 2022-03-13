@@ -26,9 +26,9 @@ const typeDefs = gql`
 
   type Comment {
     _id: ID
-    commentBody: String
+    commentText: String
     createdAt: String
-    username: String
+    user: [User]
   }
 
   type Auth {

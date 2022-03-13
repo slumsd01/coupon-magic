@@ -32,7 +32,9 @@ const resolvers = {
       return Coupon.find();
     },
     coupon: async (parent, { _id }) => {
-      return Coupon.findOne({ _id });
+      return Coupon.findOne({ _id })
+        .populate('comments')
+        .populate('user');
     }
   },
 

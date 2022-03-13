@@ -101,6 +101,15 @@ export const QUERY_COUPON = gql`
       currency
       redeemBy
       maxRedemptions
+      comments {
+        _id
+        commentText
+        createdAt
+        user {
+          _id
+          username
+        }
+      }
     }
   }
   `;

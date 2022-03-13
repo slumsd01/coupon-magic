@@ -1,7 +1,7 @@
 import React from 'react';
-import ThoughtList from '../components/ThoughtList';
+import CommentList from '../components/CommentList';
 import Coupon from '../components/Coupon';
-import ThoughtForm from '../components/ThoughtForm';
+import ThoughtForm from '../components/CommentForm';
 import Auth from '../utils/auth';
 import { Redirect } from 'react-router-dom';
 import { Container, Col } from 'react-bootstrap';
@@ -44,20 +44,20 @@ const CouponDisplay = () => {
         <Col className="d-flex bd-highlight justify-content-center p-4 col-6">
           <div className="flex-row col-12 justify-content-right">
             {/* {loggedIn && ( */}
-              <div className="col-12">
-                <ThoughtForm />
-              </div>
+              {/* <div className="col-12">
+                <CommentForm />
+              </div> */}
             {/* )} */}
-            {/* <div className={`flex-row col-12 ${loggedIn && 'col-lg-12'}`}>
+            <div className={`flex-row col-12 'col-lg-12'`}>
               {loading ? (
                 <div>Loading...</div>
               ) : (
-                <ThoughtList
-                  thoughts={thoughts}
-                  title="Some Feed for Thought(s)..."
+                <CommentList
+                  comments={coupon.comments}
+                  title="Some Comment(s)..."
                 />
-              )} */}
-            {/* </div> */}
+              )}
+            </div>
           </div>
         </Col>
       </Container>
