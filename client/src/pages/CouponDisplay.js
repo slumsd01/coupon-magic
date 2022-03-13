@@ -3,7 +3,7 @@ import ThoughtList from '../components/ThoughtList';
 import Coupon from '../components/Coupon';
 import ThoughtForm from '../components/ThoughtForm';
 import Auth from '../utils/auth';
-
+import { Redirect } from 'react-router-dom';
 import { Container, Col } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
 import { QUERY_THOUGHTS, QUERY_ME_BASIC } from '../utils/queries';
@@ -14,6 +14,12 @@ const CouponDisplay = () => {
   const { loading, data } = useQuery(QUERY_THOUGHTS);
   // use object destructuring to extract `data` from the `useQuery` Hook's response and rename it `userData` to be more descriptive
   const { data: userData } = useQuery(QUERY_ME_BASIC);
+
+  // ensure the user is logged in, if not redirect to the login page
+  if (!Auth.loggedIn()) {
+    return <Redirect to="/login" />;
+  }
+
   const thoughts = data?.thoughts || [];
   console.log(thoughts);
 
