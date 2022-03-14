@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client';
 import { ADD_COMMENT} from '../utils/mutations';
 import { QUERY_COMMENTS, QUERY_ME } from '../utils/queries';
 
-const CommentForm = (coupon) => {
+const CommentForm =  ({ couponId }) => {
     const [commentText, setText] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
     const handleChange = event => {
@@ -16,9 +16,10 @@ const CommentForm = (coupon) => {
         event.preventDefault();
 
         try {
+          alert(couponId)
           // add comment to database
           await addComment({
-            variables: { commentText }
+            variables: { couponid: couponId, commentText: commentText}
           });
       
           // clear form value

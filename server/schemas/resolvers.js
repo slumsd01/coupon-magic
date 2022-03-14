@@ -76,13 +76,13 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
-    addComment: async (parent, { args }, context) => {
+    addComment: async (parent, { couponid, commentText }, context) => {
       if (context.user) {
-        let comment= await Comment.create({ ...args, user: context.user });
-
-        // await Comment.findByIdAndUpdate(
-        //   { _id: comment_id },
-        //   { $push: { coupons: coupon._id } },
+        let comment= await Comment.create({ commentText: commentText, user: context.user });
+console.log(couponid)
+        // await Coupon.findByIdAndUpdate(
+        //   { _id: couponid},
+        //   { $push: { comments: comment } },
         //   { new: true }
         // );
 

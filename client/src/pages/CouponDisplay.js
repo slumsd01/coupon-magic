@@ -45,7 +45,7 @@ const CouponDisplay = () => {
           <div className="flex-row col-12 justify-content-right">
             {/* {loggedIn && ( */}
               <div className="col-12">
-                <CommentForm couponId={coupon._id}/>
+                <CommentForm couponId={couponId}/>
               </div>
             {/* )} */}
             <div className={`flex-row col-12 'col-lg-12'`}>
