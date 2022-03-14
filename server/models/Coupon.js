@@ -9,49 +9,59 @@ const couponSchema = new Schema(
       unique: true,
       trim: true,
     },
-    // createdAt: {
-    //   type: Date,
-    //   default: Date.now,
-    //   get: (createdAtVal) => dateFormat(createdAtVal),
-    // },
-    product: {
-      type: String,
-      require: true,
-    },
-    vendor: {
-      type: String,
-      require: true,
-      trim: true,
-    },
-    amountOff: {
-      type: Number,
-      require: true,
-    },
-    currency: {
-      type: String,
-      require: true,
-      enum: ['$', '€'],
-      default: '$',
-    },
-    redeemBy: {
+    createdAt: {
       type: Date,
+      default: Date.now,
+      get: (createdAtVal) => dateFormat(createdAtVal),
     },
-    maxRedemptions: {
-      type: Number,
-    },
-    // image: {
+    // product: {
     //   type: String,
+    //   require: true,
     // },
-    user: [{
-      type: Schema.Types.ObjectId,
-      ref: 'User'
-    }],
-    comments: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Comment'
-    }]
-
+    // vendor: {
+    //   type: String,
+    //   require: true,
+    //   trim: true,
+    // },
+    // amountOff: {
+    //   type: Number,
+    //   require: true,
+    // },
+    // currency: {
+    //   type: String,
+    //   require: true,
+    //   enum: ['$', '€'],
+    //   default: '$',
+    // },
+    // redeemBy: {
+    //   type: Date,
+    // },
+    // maxRedemptions: {
+    //   type: Number,
+    // },
+    // // image: {
+    // //   type: String,
+    // // },
+    // user: [{
+    //   type: Schema.Types.ObjectId,
+    //   ref: 'User'
+    // }]
+    // ,
+    // comments: [{
+    //   type: Schema.Types.ObjectId,
+    //   ref: 'Comment'
+    // }]
+    username: {
+      type: String,
+      required: true
+    }
+  },
+  {
+    toJSON: {
+      getters: true
+    }
   }
+
 );
 
 const Coupon = model('Coupon', couponSchema);

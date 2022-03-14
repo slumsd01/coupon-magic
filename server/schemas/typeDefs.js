@@ -14,12 +14,6 @@ const typeDefs = gql`
     _id: ID
     couponTitle: String
     createdAt: String
-    product: String
-    vendor: String
-    amountOff: Int
-    currency: String
-    redeemBy: String
-    maxRedemptions: Int
     username: String
   }
 
@@ -39,23 +33,13 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
-    coupons(username: String): [Coupon]
-    coupon(_id: ID!): Coupon
+    coupons: [Coupon]
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addCoupon(
-      couponTitle: String,
-      createdAt: String,
-      product: String,
-      vendor: String,
-      amountOff: Int,
-      currency: String,
-      redeemBy: String,
-      maxRedemptions: Int
-    ): Coupon
+    addCoupon(couponTitle: String, createdAt: String): Coupon
     addComment(couponId: ID!, commentBody: String!): Coupon
   }
 `;

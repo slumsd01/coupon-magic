@@ -82,17 +82,12 @@ export const REMOVE_FRIEND = gql`
 `;
 
 export const ADD_COUPON = gql`
-  mutation addCoupon($couponTitle: String!, $product: String!, $vendor: String!, $amountOff: Int!, $currency: String!, $redeemBy: String!, $maxRedemptions: Int!) {
-    addCoupon(couponTitle: $couponTitle, product: $product, vendor: $vendor, amountOff: $amountOff, currency: $currency, redeemBy: $redeemBy, maxRedemptions: $maxRedemptions) {
+  mutation addCoupon($couponTitle: String!) {
+    addCoupon(couponTitle: $couponTitle) {
       _id
       couponTitle
       createdAt
-      product
-      vendor
-      amountOff
-      currency
-      redeemBy
-      maxRedemptions
+      username
     }
   }
 `
