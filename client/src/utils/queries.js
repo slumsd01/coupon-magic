@@ -78,3 +78,18 @@ export const QUERY_THOUGHT = gql`
     }
   }
 `;
+
+export const QUERY_COUPON = gql`
+  query coupon($id: ID!) {
+    coupon(_id: $id) {
+      _id
+      couponTitle
+      product
+      vendor
+      amountOff
+      currency
+      redeemBy
+      maxRedemptions
+    }
+  }
+`

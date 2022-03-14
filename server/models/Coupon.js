@@ -9,11 +9,11 @@ const couponSchema = new Schema(
       unique: true,
       trim: true,
     },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-      get: (createdAtVal) => dateFormat(createdAtVal),
-    },
+    // createdAt: {
+    //   type: Date,
+    //   default: Date.now,
+    //   get: (createdAtVal) => dateFormat(createdAtVal),
+    // },
     product: {
       type: String,
       require: true,

@@ -86,13 +86,13 @@ export const ADD_COUPON = gql`
     addCoupon(couponTitle: $couponTitle, product: $product, vendor: $vendor, amountOff: $amountOff, currency: $currency, redeemBy: $redeemBy, maxRedemptions: $maxRedemptions) {
       _id
       couponTitle
+      createdAt
       product
       vendor
       amountOff
       currency
       redeemBy
       maxRedemptions
-      username
     }
   }
 `
