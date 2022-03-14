@@ -14,7 +14,6 @@ const CommentList = ({ comments, title }) => {
           <div key={comment._id} className="card mb-3">
             <p className="card-header">
               {comment.user.username}
-              {comment.createdAt}
             </p>
             <div className="card-body">
               <p>{comment.commentText}</p>

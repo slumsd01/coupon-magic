@@ -1,36 +1,26 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_THOUGHTS = gql`
-  query thoughts($username: String) {
-    thoughts(username: $username) {
+export const QUERY_COMMENTS = gql`
+  query comments($user: String) {
+    comments(user: $user) {
       _id
-      thoughtText
-      createdAt
-      username
-      reactionCount
-      reactions {
+      commentText
+      user {
         _id
-        createdAt
         username
-        reactionBody
       }
     }
   }
 `;
 
-export const QUERY_THOUGHT = gql`
-  query thought($id: ID!) {
-    thought(_id: $id) {
+export const QUERY_COMMENT= gql`
+  query comment($id: ID!) {
+    comment(_id: $id) {
       _id
-      thoughtText
-      createdAt
-      username
-      reactionCount
-      reactions {
+      commentText
+      user {
         _id
-        createdAt
         username
-        reactionBody
       }
     }
   }
@@ -104,7 +94,6 @@ export const QUERY_COUPON = gql`
       comments {
         _id
         commentText
-        createdAt
         user {
           _id
           username

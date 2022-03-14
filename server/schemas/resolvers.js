@@ -76,15 +76,26 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
-    addComment: async (parent, { couponId, commentText }, context) => {
+    addComment: async (parent, { args }, context) => {
       if (context.user) {
-        const updatedCoupon = await Coupon.findOneAndUpdate(
-          { _id: couponId },
-          { $push: { comments: { commentText, username: context.user.username } } },
-          { new: true, runValidators: true }
-        );
+        let comment= await Comment.create({ ...args, user: context.user });
 
-        return updatedCoupon;
+        // await Comment.findByIdAndUpdate(
+        //   { _id: comment_id },
+        //   { $push: { coupons: coupon._id } },
+        //   { new: true }
+        // );
+
+        return comment;
+
+      // if (context.user) {
+      //   const updatedCoupon = await Coupon.findOneAndUpdate(
+      //     { _id: couponId },
+      //     { $push: { comments: { commentText, user: context.user } } },
+      //     { new: true, runValidators: true }
+      //   );
+
+      //   return updatedCoupon;
       }
 
       throw new AuthenticationError('You need to be logged in!');

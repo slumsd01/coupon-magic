@@ -13,7 +13,6 @@ const typeDefs = gql`
   type Coupon {
     _id: ID
     couponTitle: String
-    createdAt: String
     product: String
     vendor: String
     amountOff: Int
@@ -27,7 +26,6 @@ const typeDefs = gql`
   type Comment {
     _id: ID
     commentText: String
-    createdAt: String
     user: [User]
   }
 
@@ -48,7 +46,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addCoupon(couponTitle: String!): Coupon
-    addComment(couponId: ID!, commentBody: String!): Coupon
+    addComment(commentText: String!): Comment
   }
 `;
 

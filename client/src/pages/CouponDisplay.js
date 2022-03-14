@@ -1,12 +1,12 @@
 import React from 'react';
 import CommentList from '../components/CommentList';
 import Coupon from '../components/Coupon';
-import ThoughtForm from '../components/CommentForm';
+import CommentForm from '../components/CommentForm';
 import Auth from '../utils/auth';
 import { Redirect } from 'react-router-dom';
 import { Container, Col } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
-import { QUERY_ME_BASIC, QUERY_COUPON } from '../utils/queries';
+import { QUERY_COUPON } from '../utils/queries';
 import { useParams } from 'react-router-dom';
 
 const CouponDisplay = () => {
@@ -44,9 +44,9 @@ const CouponDisplay = () => {
         <Col className="d-flex bd-highlight justify-content-center p-4 col-6">
           <div className="flex-row col-12 justify-content-right">
             {/* {loggedIn && ( */}
-              {/* <div className="col-12">
-                <CommentForm />
-              </div> */}
+              <div className="col-12">
+                <CommentForm couponId={coupon._id}/>
+              </div>
             {/* )} */}
             <div className={`flex-row col-12 'col-lg-12'`}>
               {loading ? (
