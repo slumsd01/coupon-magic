@@ -47,7 +47,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addCoupon(couponTitle: String!): Coupon
-    addComment(commentText: String!): Comment
+    addComment(couponId: ID!, commentText: String!): Comment
   }
 `;
 

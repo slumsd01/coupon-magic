@@ -19,7 +19,7 @@ const CommentForm =  ({ couponId }) => {
           alert(couponId)
           // add comment to database
           await addComment({
-            variables: { couponid: couponId, commentText: commentText}
+            variables: { couponId: couponId, commentText: commentText}
           });
       
           // clear form value

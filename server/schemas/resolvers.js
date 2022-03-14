@@ -63,7 +63,7 @@ const resolvers = {
     },
     addCoupon: async (parent, args, context) => {
       if (context.user) {
-        const coupon= await coupon.create({ ...args, username: context.user.username });
+        const coupon = await coupon.create({ ...args, username: context.user.username });
 
         await User.findByIdAndUpdate(
           { _id: context.user._id },
@@ -76,43 +76,28 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
-    addComment: async (parent, { couponid, commentText }, context) => {
+    addComment: async (parent, { couponId, commentText }, context) => {
       if (context.user) {
-        let comment= await Comment.create({ commentText: commentText, user: context.user });
-console.log(couponid)
-        // await Coupon.findByIdAndUpdate(
-        //   { _id: couponid},
-        //   { $push: { comments: comment } },
-        //   { new: true }
-        // );
 
-        return comment;
+        let comment = await Comment.create({ commentText: commentText, user: context.user });
 
-      // if (context.user) {
-      //   const updatedCoupon = await Coupon.findOneAndUpdate(
-      //     { _id: couponId },
-      //     { $push: { comments: { commentText, user: context.user } } },
-      //     { new: true, runValidators: true }
-      //   );
+        let couponToUpdate = await Coupon.findByIdAndUpdate(
+          { _id: couponId },
+          { $push: { comments: comment } },
+          { new: true }
+        );
+        
+        let commentToUpdate = await Comment.findByIdAndUpdate(
+          { _id: comment._id },
+          { $push: { coupon: couponToUpdate } },
+          { new: true }
+        );
 
-      //   return updatedCoupon;
+        return commentToUpdate;
       }
 
       throw new AuthenticationError('You need to be logged in!');
     }
-    // addComment: async (parent, { couponId }, context) => {
-    //   if (context.user) {
-    //     const updatedUser = await User.findOneAndUpdate(
-    //       { _id: context.user._id },
-    //       { $addToSet: { comments: commentId } },
-    //       { new: true }
-    //     ).populate('comments');
-
-    //     return updatedUser;
-    //   }
-
-    //   throw new AuthenticationError('You need to be logged in!');
-    // }
   }
 };
 
