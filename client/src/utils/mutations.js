@@ -46,11 +46,11 @@ export const ADD_COMMENT= gql`
     addComment(commentText: $commentText) {
       _id
       commentText
-      user
+      coupon
       {
         _id
       }
-      coupon
+      user
       {
         _id
       }

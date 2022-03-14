@@ -27,6 +27,7 @@ const typeDefs = gql`
     _id: ID
     commentText: String
     user: [User]
+    coupon: [Coupon]
   }
 
   type Auth {
