@@ -16,15 +16,14 @@ const CommentForm =  ({ couponId }) => {
         event.preventDefault();
 
         try {
-          alert(couponId)
           // add comment to database
           await addComment({
             variables: { couponId: couponId, commentText: commentText}
           });
       
           // clear form value
-          setText('');
-          setCharacterCount(0);
+          window.location.reload();
+          
         } catch (e) {
           console.error(e);
         }
