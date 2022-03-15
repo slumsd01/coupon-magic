@@ -28,12 +28,14 @@ const resolvers = {
         .populate('coupons')
         .populate('comments');
     },
-    coupons: async () => {
-      return Coupon.find();
+    
+    coupons: async() => {
+      return Coupon.find().sort( { createdAt: -1 })
     },
-    coupon: async (parent, { _id }) => {
-      return Coupon.findOne({ _id });
-    }
+
+    // coupon: async (parent, { _id }) => {
+    //   return Coupon.findOne({ _id });
+    // }
   },
 
   Mutation: {

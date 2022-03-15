@@ -1,17 +1,38 @@
 import React from 'react';
 import Auth from '../utils/auth';
-import Select from 'react-select';
+import Dropdown from 'react-bootstrap/Dropdown';
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 const Profile = () => {
-  const { loading, error, data } = useQuery(QUERY_ME);
+  // const [formState, setFormState] = useState({ email: '', password: '' });
+  // const [login, { error }] = useMutation(LOGIN_USER);
+  // // update state based on form input changes
+  // const handleChange = (event) => {
+  //   const { name, value } = event.target;
 
-  if (loading) return 'Loading...';
-  if (error) return `Error! ${error.message}`;
-  
-  if (!Auth.loggedIn()) {
-    return <Redirect to="/login" />;
-  }
- 
+  //   setFormState({
+  //     ...formState,
+  //     [name]: value,
+  //   });
+  // };
+
+  // // submit form
+  // const handleFormSubmit = async event => {
+  //   event.preventDefault();
+
+  //   try {
+  //     const { data } = await login({
+  //       variables: { ...formState }
+  //     });
+    
+  //     Auth.login(data.login.token);
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // };
+
+  // const loggedIn = Auth.loggedIn();
+
   return (
     <main>
       <div className="container">
@@ -27,18 +48,15 @@ const Profile = () => {
             <div className="bd-highlight col-3 bg-primary-color">
               My Coupons
             </div>
-            {
-              data ?
-                (
-                  // <Select options={this.couponsFromDatabase} />
-                  <select key="couponSelection">
-                      {data.me.coupons.map(coupon => (
-                        <option key={coupon._id} value={coupon._id}>
-                      {coupon.couponTitle}
-                      </option>))}
-                  </select>
-              ) : null
-            }
+            <Dropdown as={ButtonGroup}>
+              <Dropdown.Toggle variant="light">Select previously created coupon here!</Dropdown.Toggle>
+              <Dropdown.Menu className="dropdownbutton">
+                <Dropdown.Item eventKey="1">baz</Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item eventKey="2">foo</Dropdown.Item>
+                <Dropdown.Item eventKey="3">bar</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </div>
           <div className="d-flex col-12 bd-highlight justify-content-center">
             <button className="d-flex bd-highlight justify-content-center col-2">
