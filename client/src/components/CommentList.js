@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const CommentList = ({ comments, title }) => {
   if (!comments.length) {
@@ -13,7 +12,11 @@ const CommentList = ({ comments, title }) => {
         comments.map(comment => (
           <div key={comment._id} className="card mb-3">
             <p className="card-header">
-              {comment.user.username}
+              {comment.user[0].username}
+              {/* {comment.user.username} */}
+              {/* {comment.user.map(( username) => (
+                {username}
+              ))} */}
             </p>
             <div className="card-body">
               <p>{comment.commentText}</p>

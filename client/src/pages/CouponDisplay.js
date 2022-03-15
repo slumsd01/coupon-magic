@@ -26,7 +26,7 @@ const CouponDisplay = () => {
   if (!Auth.loggedIn()) {
     return <Redirect to="/login" />;
   }
-
+  console.log(coupon)
   return (
     <main>
       <Container className="d-flex justify-content-between col-12 p-2 mt-4">
