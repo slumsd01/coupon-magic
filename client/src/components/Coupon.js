@@ -10,15 +10,15 @@ const Coupon = ({ singleCoupon }) => {
   return (
     <Card>
         <Card.Img variant="top" src={placeholder} />
-        <Card.Title>{singleCoupon.couponTitle}</Card.Title>
-        <Card.Text>{singleCoupon.product}</Card.Text>
-        <Card.Text>{singleCoupon.vendor}</Card.Text>
-        <Card.Text>{singleCoupon.amountOff} Off</Card.Text>
-        <Card.Text>{singleCoupon.redeemBy}</Card.Text>
-        <Card.Text>{singleCoupon.maxRedemptions} Max Redemptions</Card.Text>
-        <Card.Text>{singleCoupon._id} ID</Card.Text>
-        <Button>Image</Button>
-        <Button>Code</Button>
+        <Card.Title>Title: {singleCoupon.couponTitle}</Card.Title>
+        <Card.Text>Product: {singleCoupon.product}</Card.Text>
+        <Card.Text>Vendor: {singleCoupon.vendor}</Card.Text>
+        <Card.Text>Discount: {singleCoupon.amountOff}</Card.Text>
+        <Card.Text>Redeem Date: {singleCoupon.redeemBy}</Card.Text>
+        <Card.Text>Max Redemptions: {singleCoupon.maxRedemptions}</Card.Text>
+        <Card.Text>Coupon ID {singleCoupon._id}</Card.Text>
+        {/* <Button>Image</Button>
+        <Button>Code</Button> */}
     </Card>
   );
 };

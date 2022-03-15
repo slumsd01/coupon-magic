@@ -95,7 +95,6 @@ export const QUERY_COUPON = gql`
         _id
         commentText
         user {
-          _id
           username
         }
       }

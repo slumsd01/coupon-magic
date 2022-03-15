@@ -30,11 +30,16 @@ const resolvers = {
     },
     coupons: async () => {
       return Coupon.find();
+
     },
     coupon: async (parent, { _id }) => {
       return Coupon.findOne({ _id })
-        .populate('comments')
-        .populate('user');
+        .populate({
+          path: 'comments',
+          populate: {
+            path: "user"
+          }
+        });
     }
   },
 
