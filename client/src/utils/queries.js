@@ -83,7 +83,14 @@ export const QUERY_COUPON = gql`
   query coupon($id: ID!) {
     coupon(_id: $id) {
       _id
+      createdAt
       couponTitle
+      product
+      vendor
+      amountOff
+      currency
+      redeemBy
+      maxRedemptions
       username
     }
   }

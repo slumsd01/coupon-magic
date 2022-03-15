@@ -70,7 +70,6 @@ const resolvers = {
           { $push: { coupons: coupon._id } },
           { new: true }
         );
-
         return coupon;
       }
 

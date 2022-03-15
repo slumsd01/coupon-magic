@@ -14,43 +14,42 @@ const couponSchema = new Schema(
       default: Date.now,
       get: (createdAtVal) => dateFormat(createdAtVal),
     },
-    // product: {
+    product: {
+      type: String,
+      require: true,
+    },
+    vendor: {
+      type: String,
+      require: true,
+      trim: true,
+    },
+    amountOff: {
+      type: Number,
+      require: true,
+    },
+    currency: {
+      type: String,
+      require: true,
+      enum: ['$', '€'],
+      default: '$',
+    },
+    redeemBy: {
+      type: Date,
+    },
+    maxRedemptions: {
+      type: Number,
+    },
+    // image: {
     //   type: String,
-    //   require: true,
     // },
-    // vendor: {
-    //   type: String,
-    //   require: true,
-    //   trim: true,
-    // },
-    // amountOff: {
-    //   type: Number,
-    //   require: true,
-    // },
-    // currency: {
-    //   type: String,
-    //   require: true,
-    //   enum: ['$', '€'],
-    //   default: '$',
-    // },
-    // redeemBy: {
-    //   type: Date,
-    // },
-    // maxRedemptions: {
-    //   type: Number,
-    // },
-    // // image: {
-    // //   type: String,
-    // // },
-    // user: [{
-    //   type: Schema.Types.ObjectId,
-    //   ref: 'User'
-    // }]
-    // ,
-    // comments: [{
-    //   type: Schema.Types.ObjectId,
-    //   ref: 'Comment'
-    // }]
+    user: [{
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }],
+    comments: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Comment'
+    }],
     username: {
       type: String,
       required: true

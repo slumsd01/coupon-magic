@@ -85,8 +85,14 @@ export const ADD_COUPON = gql`
   mutation addCoupon($couponTitle: String!) {
     addCoupon(couponTitle: $couponTitle) {
       _id
-      couponTitle
       createdAt
+      couponTitle
+      product
+      vendor
+      amountOff
+      currency
+      redeemBy
+      maxRedemptions
       username
     }
   }
