@@ -61,20 +61,22 @@ const Profile = () => {
         <div className="container bg-secondary-color justify-content-center p-4 mt-4">
           <div className="d-flex bd-highlight justify-content-center p-4">
             <div className="bd-highlight col-3 bg-primary-color">
-              Coupon Search by ID
+              All Coupons
             </div>
-            <input
-                className='form-input'
-                placeholder='Insert ID'
-                name='coupon'
-                type='coupon'
-                id='coupon'
-                // value={formState.password}
-                // onChange={handleChange}
-              />
+            {
+              data ?
+                (
+                  <select id="couponSelection">
+                      {data.me.coupons.map(coupon => (
+                        <option key={coupon._id} value={coupon._id}>
+                      {coupon.couponTitle}
+                      </option>))}
+                  </select>
+              ) : null
+            }
           </div>
           <div className="d-flex col-12 bd-highlight justify-content-center">
-            <button className="d-flex bd-highlight justify-content-center col-2">
+            <button className="d-flex bd-highlight justify-content-center col-2" onClick={handleChange}>
               Submit
             </button>
           </div>

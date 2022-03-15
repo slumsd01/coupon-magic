@@ -26,7 +26,7 @@ const CouponDisplay = () => {
   if (!Auth.loggedIn()) {
     return <Redirect to="/login" />;
   }
-
+  const loggedIn = Auth.loggedIn();
   return (
     <main>
       <Container className="d-flex justify-content-between col-12 p-2 mt-4">
@@ -43,11 +43,11 @@ const CouponDisplay = () => {
         </Col>
         <Col className="d-flex bd-highlight justify-content-center p-4 col-6">
           <div className="flex-row col-12 justify-content-right">
-            {/* {loggedIn && ( */}
+            {loggedIn && (
               <div className="col-12">
                 <CommentForm couponId={couponId}/>
               </div>
-            {/* )} */}
+            )}
             <div className={`flex-row col-12 'col-lg-12'`}>
               {loading ? (
                 <div>Loading...</div>
