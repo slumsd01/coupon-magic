@@ -33,6 +33,27 @@ export const QUERY_ME = gql`
   }
 `;
 
+export const QUERY_COUPONS = gql`
+  {
+    coupons  {
+      _id
+      couponTitle
+      product
+      vendor
+      amountOff
+      currency
+      redeemBy
+      maxRedemptions
+      user {
+        _id
+      }
+      comments {
+        _id
+      }
+    }
+  }
+`;
+
 export const QUERY_ME_BASIC = gql`
   {
     me {
