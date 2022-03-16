@@ -17,6 +17,7 @@ const typeDefs = gql`
     product: String
     vendor: String
     amountOff: String
+    currency: String
     redeemBy: String
     maxRedemptions: String
     username: String
@@ -54,6 +55,7 @@ const typeDefs = gql`
       product: String,
       vendor: String,
       amountOff: String,
+      currency: String,
       redeemBy: String,
       maxRedemptions: String
     ): Coupon

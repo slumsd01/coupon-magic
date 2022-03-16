@@ -27,6 +27,12 @@ const couponSchema = new Schema(
       type: String,
       require: true,
     },
+    currency: {
+      type: String,
+      require: true,
+      enum: ['$', '€'],
+      default: '$',
+    },
     redeemBy: {
       type: String,
     },
