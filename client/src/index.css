@@ -1,0 +1,103 @@
+:root {
+    --primary: #50D1FA;
+    --secondary: #64F500;
+    --tertiary: #BD54E3;
+    --light: #fafafa;
+    --dark: #000000;
+    --darker: #111111;
+    --error: rgb(228, 46, 1);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    line-height: 1.5;
+    font-size: 18px;
+    letter-spacing: .1em;
+    color: #000000;
+    font-family: 'Harrington';
+    background-color: #50D1FA;
+}
+
+a:link {
+    color: #000000;
+}
+
+a:visited {
+    color: #000000;
+}
+
+a:hover {
+    color: #BD54E3;
+}
+
+.bg-primary-color {
+    background-color: #50D1FA;
+}
+
+.bg-secondary-color {
+    background-color: #64F500;
+}
+
+.bg-tertiary-color {
+    background-color: #BD54E3;
+    
+}
+
+.text-color-white {
+    color: #fafafa;
+}
+
+.bg-dark-color {
+    background-color: #000000;
+}
+
+.dropdownbutton{
+    background-color: #fafafa;
+}
+
+/* home & coupon display */
+
+.blue-bg {
+    background-color: var(--primary)
+}
+
+.green-bg {
+    background-color: var(--secondary)
+}
+
+.purple-bg {
+    background-color: var(--tertiary);
+    color: white;
+}
+
+.page {
+    text-align: center;
+    margin: 0 10px;
+}
+
+.page h2, .page h4 {
+    padding: 2px;
+}
+
+.left-align {
+    text-align: left;
+    margin: 15px 10px;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+.form {
+    padding: 30px 50px;
+}
+
+.form button {
+    width: 50%;
+}
+
+.about img {
+    height: 100px;
+}

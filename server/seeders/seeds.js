@@ -1,54 +1,62 @@
-const db = require('../config/connection');
-const { Comment, User, Coupon } = require('../models');
 
-const userData = require('./userData.json');
-const couponData = require('./couponData.json');
-const commentData = require('./commentData.json');
+// generate dummy data
+const faker = require('faker');
+
+const db = require('../config/connection');
+const { Coupon, User, Comment } = require('../models');
 
 db.once('open', async () => {
-  // clean database
-  await User.deleteMany({});
-  await Comment.deleteMany({});
-  await Coupon.deleteMany({});
+  // await Coupon.deleteMany({});
+  // await User.deleteMany({});
+  // await Comment.deleteMany({})
 
-  // bulk create each model
-  const users = await User.insertMany(userData);
-  const coupons = await Coupon.insertMany(couponData);
-  const comments = await Comment.insertMany(commentData);
+  // create user data
+  const userData = [];
 
-  for (newCoupon of coupons) {
-    // randomly add each Coupon to a User
-    const tempUser = users[Math.floor(Math.random() * users.length)];
-    tempUser.coupons.push(newCoupon._id);
-    await tempUser.save();
+  for (let i = 0; i < 25; i += 1) {
+    const username = faker.internet.userName();
+    const email = faker.internet.email(username);
+    const password = faker.internet.password();
 
-    // // randomly add a Comment to each User
-    // const tempComment = comments[Math.floor(Math.random() * comments.length)];
-    // newCoupon.comment = tempComment._id;
-    // await newCoupon.save();
-
-    // // reference comment on coupons
-    // tempComment.Coupon.push(newCoupon._id);
-    // await tempComment.save();
+    userData.push({ username, email, password });
   }
 
-  // for (newClass of classes) {
-  //   // randomly add each class to a school
-  //   const tempSchool = schools[Math.floor(Math.random() * schools.length)];
-  //   tempSchool.classes.push(newClass._id);
-  //   await tempSchool.save();
+  const createdUsers = await User.collection.insertMany(userData);
 
-  //   // randomly add a professor to each class
-  //   const tempProfessor = professors[Math.floor(Math.random() * professors.length)];
-  //   newClass.professor = tempProfessor._id;
-  //   await newClass.save();
+  // create coupon
+  let createdCoupons = [];
+  for (let i = 0; i < 50; i += 1) {
+    const product = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
-  //   // reference class on professor model, too
-  //   tempProfessor.classes.push(newClass._id);
-  //   await tempProfessor.save();
-  // }
+    const randomUserIndex = Math.floor(Math.random() * createdUsers.length);
+    const { username, _id: userId } = createdUsers[randomUserIndex];
 
+    const createdCoupon = await Coupon.create({ username, product});
 
+    const updatedUser = await User.updateOne(
+      { _id: userId },
+      { $push: { coupons: createdCoupon._id } }
+    );
+
+    createdCoupons.push(createdCoupon);
+  }
+
+  // create comments
+  for (let i = 0; i < 50; i += 1) {
+    const commentText = faker.lorem.words(Math.round(Math.random() * 20) + 1);
+
+    const randomUserIndex = Math.floor(Math.random() * createdUsers.length);
+    const { username } = createdUsers[randomUserIndex];
+
+    const randomCouponIndex = Math.floor(Math.random() * createdCoupons.length);
+    const { _id: couponId } = createdCoupons[randomCouponIndex];
+
+    await Coupon.updateOne(
+      { _id: couponId },
+      { $push: { comments: { commentText, username } } },
+      { runValidators: true }
+    );
+  }
 
   console.log('all done!');
   process.exit(0);

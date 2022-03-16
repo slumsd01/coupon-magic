@@ -5,25 +5,62 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
-    couponId: [Coupon]
+    commentCount: Int
+    coupons: [Coupon]
+    comments: [User]
   }
+
   type Coupon {
     _id: ID
-    couponTitle: String
     createdAt: String
-    userId: [User]
+    couponTitle: String
+    product: String
+    vendor: String
+    amountOff: String
+    currency: String
+    redeemBy: String
+    maxRedemptions: String
+    username: String
+    user: [User]
+    comments: [Comment]
   }
+
   type Comment {
-      _id: ID
-      commentText: String
-      createdAt: String
-      couponId: [Coupon]
-      userId: [User]
+    _id: ID
+    commentText: String
+    user: [User]
+    coupon: [Coupon]
   }
+
+  type Auth {
+    token: ID!
+    user: User
+  }
+
   type Query {
+    me: User
     users: [User]
-    coupons: [Coupon]
+    user(username: String!): User
+    coupons(username: String): [Coupon]
+    coupon(_id: ID!): Coupon
   }
+
+  type Mutation {
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth    
+    
+    addCoupon(
+      createdAt: String,
+      couponTitle: String,
+      product: String,
+      vendor: String,
+      amountOff: String,
+      currency: String,
+      redeemBy: String,
+      maxRedemptions: String
+    ): Coupon
+    
+    addComment(couponId: ID!, commentText: String!): Comment  }
 `;
 
 module.exports = typeDefs;

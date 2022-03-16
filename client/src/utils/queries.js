@@ -1,57 +1,18 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_THOUGHTS = gql`
-  query thoughts($username: String) {
-    thoughts(username: $username) {
-      _id
-      thoughtText
-      createdAt
-      username
-      reactionCount
-      reactions {
-        _id
-        createdAt
-        username
-        reactionBody
-      }
-    }
-  }
-`;
-
-export const QUERY_THOUGHT = gql`
-  query thought($id: ID!) {
-    thought(_id: $id) {
-      _id
-      thoughtText
-      createdAt
-      username
-      reactionCount
-      reactions {
-        _id
-        createdAt
-        username
-        reactionBody
-      }
-    }
-  }
-`;
-
 export const QUERY_USER = gql`
   query user($username: String!) {
     user(username: $username) {
-      _id
-      username
-      email
-      friendCount
-      friends {
+    username
+    email
+      coupons {
         _id
-        username
-      }
-      thoughts {
-        _id
-        thoughtText
-        createdAt
-        reactionCount
+        couponTitle
+        product
+        vendor
+        amountOff
+        redeemBy
+        maxRedemptions
       }
     }
   }
@@ -63,20 +24,67 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      friendCount
-      thoughts {
+      coupons {
         _id
-        thoughtText
-        createdAt
-        reactionCount
-        reactions {
-          _id
-          createdAt
-          reactionBody
+        couponTitle
+      }
+    }
+  }
+`;
+
+export const QUERY_COUPON = gql`
+  query coupon($id: ID!) {
+    coupon(_id: $id) {
+      _id
+      createdAt
+      couponTitle
+      product
+      vendor
+      amountOff
+      redeemBy
+      maxRedemptions
+      username
+      user {
+        _id
+      }
+      comments {
+        _id
+        commentText
+        user {
           username
         }
       }
-      friends {
+    }
+  }
+`
+
+export const QUERY_COUPONS = gql`
+  {
+    coupons {
+      _id
+      createdAt
+      couponTitle
+      product
+      vendor
+      amountOff
+      redeemBy
+      maxRedemptions
+      username
+      user {
+        _id
+      }
+      comments {
+        _id
+      }
+    }
+  }
+`
+export const QUERY_COMMENT= gql`
+  query comment($id: ID!) {
+    comment(_id: $id) {
+      _id
+      commentText
+      user {
         _id
         username
       }
@@ -84,14 +92,12 @@ export const QUERY_ME = gql`
   }
 `;
 
-export const QUERY_ME_BASIC = gql`
-  {
-    me {
+export const QUERY_COMMENTS = gql`
+  query comments($user: String) {
+    comments(user: $user) {
       _id
-      username
-      email
-      friendCount
-      friends {
+      commentText
+      user {
         _id
         username
       }

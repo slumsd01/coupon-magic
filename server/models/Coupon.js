@@ -24,7 +24,7 @@ const couponSchema = new Schema(
       trim: true,
     },
     amountOff: {
-      type: Number,
+      type: String,
       require: true,
     },
     currency: {
@@ -34,14 +34,18 @@ const couponSchema = new Schema(
       default: '$',
     },
     redeemBy: {
-      type: Date,
-    },
-    maxRedemptions: {
-      type: Number,
-    },
-    image: {
       type: String,
     },
+    maxRedemptions: {
+      type: String,
+    },
+    username: {
+      type: String,
+      required: true
+    },
+    // image: {
+    //   type: String,
+    // },
     user: [{
       type: Schema.Types.ObjectId,
       ref: 'User'
@@ -50,8 +54,13 @@ const couponSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'Comment'
     }]
-
+  },
+  {
+    toJSON: {
+      getters: true
+    }
   }
+
 );
 
 const Coupon = model('Coupon', couponSchema);
