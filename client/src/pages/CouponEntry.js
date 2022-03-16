@@ -15,8 +15,7 @@ const CouponEntry = () => {
     }
   );
 
-  const { couponTitle, product, vendor, amountOff, currency, redeemBy, maxRedemptions 
-  } = formState
+  const { couponTitle, product, vendor, amountOff, currency, redeemBy, maxRedemptions } = formState
 
   const [addCoupon, { error }] = useMutation(ADD_COUPON)
 
@@ -30,7 +29,6 @@ const CouponEntry = () => {
 
     try {
       // add to database
-      console.log(formState)
       await addCoupon({
         variables: {...formState}
       })

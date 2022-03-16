@@ -13,10 +13,12 @@ const CommentList = ({ comments, title }) => {
           <div key={comment._id} className="card mb-3">
             <p className="card-header">
               {comment.user[0].username}
+{/* ================= SEE NOTES =================               */}
               {/* {comment.user.username} */}
               {/* {comment.user.map(( username) => (
                 {username}
               ))} */}
+{/* ============================================= */}
             </p>
             <div className="card-body">
               <p>{comment.commentText}</p>

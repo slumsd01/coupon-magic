@@ -42,8 +42,8 @@ export const ADD_COMMENT= gql`
 `;
 
 export const ADD_COUPON = gql`
-  mutation addCoupon($couponTitle: String!) {
-    addCoupon(couponTitle: $couponTitle) {
+  mutation addCoupon($couponTitle: String!, $product: String, $vendor: String, $amountOff: String, $currency: String, $redeemBy: String, $maxRedemptions: String) {
+    addCoupon(couponTitle: $couponTitle, product: $product, vendor: $vendor, amountOff: $amountOff, currency: $currency, redeemBy: $redeemBy, maxRedemptions: $maxRedemptions) {
       _id
       createdAt
       couponTitle
@@ -54,6 +54,9 @@ export const ADD_COUPON = gql`
       redeemBy
       maxRedemptions
       username
+      user {
+        _id
+      }
     }
   }
 `

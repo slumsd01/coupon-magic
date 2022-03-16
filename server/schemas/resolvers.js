@@ -28,19 +28,19 @@ const resolvers = {
         .populate('coupons')
         .populate('comments');
     },
-    coupons: async () => {
-      return Coupon.find();
-
+    
+    coupons: async() => {
+      return Coupon.find()
     },
+
     coupon: async (parent, { _id }) => {
-      console.log(_id)
       return Coupon.findOne({ _id })
-        .populate({
-          path: 'comments',
-          populate: {
-            path: "user"
-          }
-        });
+      .populate({
+        path: 'comments',
+        populate: {
+          path: "user"
+        }
+      });
     }
   },
 
@@ -76,7 +76,6 @@ const resolvers = {
           { $push: { coupons: coupon._id } },
           { new: true }
         );
-
         return coupon;
       }
 

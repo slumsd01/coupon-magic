@@ -29,7 +29,8 @@ const CommentForm =  ({ couponId }) => {
         }
     };
      const [addComment, { error }] = useMutation(ADD_COMMENT);
-    //  , {
+
+     //  , {
     //     update(cache, { data: { addComment } }) {
     //       try {
     //         // could potentially not exist yet, so wrap in a try...catch
@@ -50,6 +51,7 @@ const CommentForm =  ({ couponId }) => {
     //       });
     //     }
     // });
+
   return (
     <div>
         <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>

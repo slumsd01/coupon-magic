@@ -24,7 +24,7 @@ const couponSchema = new Schema(
       trim: true,
     },
     amountOff: {
-      type: Number,
+      type: String,
       require: true,
     },
     currency: {
@@ -34,11 +34,14 @@ const couponSchema = new Schema(
       default: '$',
     },
     redeemBy: {
-      // type: Date,
-      type: String
+      type: String,
     },
     maxRedemptions: {
-      type: Number,
+      type: String,
+    },
+    username: {
+      type: String,
+      required: true
     },
     // image: {
     //   type: String,
@@ -50,11 +53,7 @@ const couponSchema = new Schema(
     comments: [{
       type: Schema.Types.ObjectId,
       ref: 'Comment'
-    }],
-    username: {
-      type: String,
-      required: true
-    }
+    }]
   },
   {
     toJSON: {
