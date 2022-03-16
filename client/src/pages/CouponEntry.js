@@ -30,6 +30,7 @@ const CouponEntry = () => {
 
     try {
       // add to database
+      console.log(formState)
       await addCoupon({
         variables: {...formState}
       })

@@ -40,3 +40,20 @@ export const ADD_COMMENT= gql`
     }
   }
 `;
+
+export const ADD_COUPON = gql`
+  mutation addCoupon($couponTitle: String!) {
+    addCoupon(couponTitle: $couponTitle) {
+      _id
+      createdAt
+      couponTitle
+      product
+      vendor
+      amountOff
+      currency
+      redeemBy
+      maxRedemptions
+      username
+    }
+  }
+`

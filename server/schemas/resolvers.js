@@ -33,6 +33,7 @@ const resolvers = {
 
     },
     coupon: async (parent, { _id }) => {
+      console.log(_id)
       return Coupon.findOne({ _id })
         .populate({
           path: 'comments',
@@ -68,13 +69,14 @@ const resolvers = {
     },
     addCoupon: async (parent, args, context) => {
       if (context.user) {
-        const coupon = await coupon.create({ ...args, username: context.user.username });
+        const coupon = await Coupon.create({ ...args, username: context.user.username });
 
         await User.findByIdAndUpdate(
           { _id: context.user._id },
           { $push: { coupons: coupon._id } },
           { new: true }
         );
+
         return coupon;
       }
 
