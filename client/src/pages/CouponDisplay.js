@@ -1,24 +1,32 @@
 import React from 'react';
-import ThoughtList from '../components/ThoughtList';
+import CommentList from '../components/CommentList';
 import Coupon from '../components/Coupon';
-import ThoughtForm from '../components/ThoughtForm';
+import CommentForm from '../components/CommentForm';
 import Auth from '../utils/auth';
-
+import { Redirect } from 'react-router-dom';
 import { Container, Col } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
-import { QUERY_THOUGHTS, QUERY_ME_BASIC } from '../utils/queries';
-
+import { QUERY_COUPON } from '../utils/queries';
+import { useParams } from 'react-router-dom';
 
 const CouponDisplay = () => {
+  const { id: couponId } = useParams();
+
   // use useQuery hook to make query request
-  const { loading, data } = useQuery(QUERY_THOUGHTS);
-  // use object destructuring to extract `data` from the `useQuery` Hook's response and rename it `userData` to be more descriptive
-  const { data: userData } = useQuery(QUERY_ME_BASIC);
-  const thoughts = data?.thoughts || [];
-  console.log(thoughts);
+  const { loading, error, data } = useQuery(QUERY_COUPON, {
+    variables: { id: couponId }
+  });
 
-  const loggedIn = Auth.loggedIn();
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
 
+  const coupon = data?.coupon || {};
+
+  // ensure the user is logged in, if not redirect to the login page
+  if (!Auth.loggedIn()) {
+    return <Redirect to="/login" />;
+  }
+  console.log(coupon)
   return (
     <main>
       <Container className="d-flex justify-content-between col-12 p-2 mt-4">
@@ -26,7 +34,8 @@ const CouponDisplay = () => {
           <div className="d-flex justify-content-left">
             {/* {loggedIn && ( */}
               <div className="col-12">
-                <Coupon />
+                <Coupon 
+                  singleCoupon={coupon} />
               {/* </div>
             )} */}
               </div>
@@ -36,16 +45,16 @@ const CouponDisplay = () => {
           <div className="flex-row col-12 justify-content-right">
             {/* {loggedIn && ( */}
               <div className="col-12">
-                <ThoughtForm />
+                <CommentForm couponId={couponId}/>
               </div>
             {/* )} */}
-            <div className={`flex-row col-12 ${loggedIn && 'col-lg-12'}`}>
+            <div className={`flex-row col-12 'col-lg-12'`}>
               {loading ? (
                 <div>Loading...</div>
               ) : (
-                <ThoughtList
-                  thoughts={thoughts}
-                  title="Some Feed for Thought(s)..."
+                <CommentList
+                  comments={coupon.comments}
+                  title="Some Comment(s)..."
                 />
               )}
             </div>

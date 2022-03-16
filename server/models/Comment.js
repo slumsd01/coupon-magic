@@ -7,6 +7,8 @@ const commentSchema = new Schema(
       type: String,
       require: true,
       trim: true,
+      minlength: 1,
+      maxlength: 280
     },
     createdAt: {
       type: Date,
@@ -16,13 +18,13 @@ const commentSchema = new Schema(
     coupon: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Coupon",
+        ref: 'Coupon',
       },
     ],
     user: [
       {
         type: Schema.Types.ObjectId,
-        ref: "User",
+        ref: 'User',
       },
     ],
   },

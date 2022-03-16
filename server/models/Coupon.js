@@ -34,7 +34,8 @@ const couponSchema = new Schema(
       default: '$',
     },
     redeemBy: {
-      type: Date,
+      // type: Date,
+      type: String
     },
     maxRedemptions: {
       type: Number,

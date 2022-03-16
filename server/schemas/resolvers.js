@@ -28,14 +28,19 @@ const resolvers = {
         .populate('coupons')
         .populate('comments');
     },
-    
-    coupons: async() => {
-      return Coupon.find().sort( { createdAt: -1 })
-    },
+    coupons: async () => {
+      return Coupon.find();
 
-    // coupon: async (parent, { _id }) => {
-    //   return Coupon.findOne({ _id });
-    // }
+    },
+    coupon: async (parent, { _id }) => {
+      return Coupon.findOne({ _id })
+        .populate({
+          path: 'comments',
+          populate: {
+            path: "user"
+          }
+        });
+    }
   },
 
   Mutation: {
@@ -63,7 +68,7 @@ const resolvers = {
     },
     addCoupon: async (parent, args, context) => {
       if (context.user) {
-        const coupon = await Coupon.create({ ...args, username: context.user.username });
+        const coupon = await coupon.create({ ...args, username: context.user.username });
 
         await User.findByIdAndUpdate(
           { _id: context.user._id },
@@ -77,30 +82,26 @@ const resolvers = {
     },
     addComment: async (parent, { couponId, commentText }, context) => {
       if (context.user) {
-        const updatedCoupon = await Coupon.findOneAndUpdate(
+
+        let comment = await Comment.create({ commentText: commentText, user: context.user });
+
+        let couponToUpdate = await Coupon.findByIdAndUpdate(
           { _id: couponId },
-          { $push: { comments: { commentText, username: context.user.username } } },
-          { new: true, runValidators: true }
+          { $push: { comments: comment } },
+          { new: true }
+        );
+        
+        let commentToUpdate = await Comment.findByIdAndUpdate(
+          { _id: comment._id },
+          { $push: { coupon: couponToUpdate } },
+          { new: true }
         );
 
-        return updatedCoupon;
+        return commentToUpdate;
       }
 
       throw new AuthenticationError('You need to be logged in!');
     }
-    // addComment: async (parent, { couponId }, context) => {
-    //   if (context.user) {
-    //     const updatedUser = await User.findOneAndUpdate(
-    //       { _id: context.user._id },
-    //       { $addToSet: { comments: commentId } },
-    //       { new: true }
-    //     ).populate('comments');
-
-    //     return updatedUser;
-    //   }
-
-    //   throw new AuthenticationError('You need to be logged in!');
-    // }
   }
 };
 
