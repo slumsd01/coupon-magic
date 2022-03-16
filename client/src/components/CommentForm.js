@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_COMMENT} from '../utils/mutations';
-import { QUERY_COMMENTS, QUERY_ME } from '../utils/queries';
 
 const CommentForm =  ({ couponId }) => {
     const [commentText, setText] = useState('');

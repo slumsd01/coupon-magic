@@ -25,17 +25,17 @@ const Home = () => {
 
             <section className='about row'>
               <div className='col'>
-                <img src={profileIcon}/>
+                <img src={profileIcon} alt="Register Icon"/>
                 <p>Register an account</p>
               </div>
 
               <div className='col'>
-                <img src={couponIcon}/>
+                <img src={couponIcon} alt="Create Coupon Icon"/>
                 <p>Create a coupon for a product</p>
               </div>
 
               <div className='col'>
-                <img src={emailIcon}/>
+                <img src={emailIcon} alt="email Icon"/>
                 <p>Share your coupon</p>
               </div>
             </section>

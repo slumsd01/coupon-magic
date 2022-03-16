@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Redirect } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME, QUERY_COUPONS } from '../utils/queries';
