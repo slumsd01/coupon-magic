@@ -11,7 +11,6 @@ export const QUERY_USER = gql`
         product
         vendor
         amountOff
-        currency
         redeemBy
         maxRedemptions
       }
@@ -42,7 +41,6 @@ export const QUERY_COUPON = gql`
       product
       vendor
       amountOff
-      currency
       redeemBy
       maxRedemptions
       username
@@ -69,7 +67,6 @@ export const QUERY_COUPONS = gql`
       product
       vendor
       amountOff
-      currency
       redeemBy
       maxRedemptions
       username

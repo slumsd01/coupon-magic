@@ -9,13 +9,12 @@ const CouponEntry = () => {
       product: '',
       vendor: '',
       amountOff: '',
-      currency: '',
       redeemBy: '',
       maxRedemptions: '',
     }
   );
 
-  const { couponTitle, product, vendor, amountOff, currency, redeemBy, maxRedemptions } = formState
+  const { couponTitle, product, vendor, amountOff, redeemBy, maxRedemptions } = formState
 
   const [addCoupon, { error }] = useMutation(ADD_COUPON)
 
@@ -61,12 +60,8 @@ const CouponEntry = () => {
               <p className='col-4'>Discount Value (% or $ off):</p>
               <input type="text" name='amountOff' defaultValue={amountOff} onChange={handleChange} className='col-8'/>
             </label><br/>
-            <label htmlFor='currency' className='blue-bg row'>
-              <p className='col-4'>Currency:</p>
-              <input type="text" name='currency' defaultValue={currency} onChange={handleChange} className='col-8'/>
-            </label><br/>
             <label htmlFor='redeemBy' className='blue-bg row'>
-              <p className='col-4'>Expiration Date:</p>
+              <p className='col-4'>Expiration Date (MM/DD/YY):</p>
               <input type="text" name='redeemBy' defaultValue={redeemBy} onChange={handleChange} className='col-8'/>
             </label><br/>
             <label htmlFor='maxRedemptions' className='blue-bg row'>
